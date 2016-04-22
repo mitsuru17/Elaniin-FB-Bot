@@ -132,7 +132,7 @@ function sendTeamMessage(sender) {
         "elements": [{
           "title": "First card",
           "subtitle": "Element #1 of an hscroll",
-          "image_url": "http://toolboxsv.com/dev/bot-elaniin/imgs/adrian.png",
+          "image_url": "http://toolboxsv.com/dev/bot-elaniin/imgs/adrian.jpg",
           "buttons": [{
             "type": "web_url",
             "url": "https://www.messenger.com/",
