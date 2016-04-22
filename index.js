@@ -113,7 +113,8 @@ app.listen(port, function () {
 //send SMS with Twillio
 function sendSMS(sender,number,messagex){
 
-    sendTextMessage(sender, text + messagex);
+    sendTextMessage(sender, messagex);
+    sendTextMessage(sender, number);
   
 }
 //send Message with Facebook Graph Facebook v2.6
