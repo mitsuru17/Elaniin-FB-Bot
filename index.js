@@ -37,6 +37,13 @@ app.post('/webhook/', function (req, res) {
         var event = req.body.entry[0].messaging[i];
         var sender = event.sender.id;
 
+        if (event.postback) {
+            text = JSON.stringify(event.postback);
+            if (text == "adrian") {
+                sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o g.adrian@elaniin.com'");
+            }
+        }
+
         if (event.message && event.message.text) {
             var text = event.message.text;
             text = text.toLowerCase();
@@ -130,17 +137,17 @@ function sendTeamMessage(sender) {
       "payload": {
         "template_type": "generic",
         "elements": [{
-          "title": "First card",
-          "subtitle": "Element #1 of an hscroll",
+          "title": "Adrián Gómez",
+          "subtitle": "General Director",
           "image_url": "http://toolboxsv.com/dev/bot-elaniin/imgs/adrian.jpg",
           "buttons": [{
             "type": "web_url",
-            "url": "https://www.messenger.com/",
-            "title": "Web url"
+            "url": "http://m.me/adriangomezme",
+            "title": "Chatear"
           }, {
             "type": "postback",
-            "title": "Postback",
-            "payload": "Payload for first element in a generic bubble",
+            "title": "Contacto",
+            "payload": "adrian",
           }],
         },{
           "title": "Second card",
