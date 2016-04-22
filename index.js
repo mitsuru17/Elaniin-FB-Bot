@@ -81,14 +81,23 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Para cotizar cualquier de nuestros servicios puedes ingresar al siguiente link: https://elaniin.com/cotiza-tu-proyecto/");
             }
             else if (text == "sms") {
-                sendTextMessage(sender, "Para enviar un sms debes escribir: 'enviar + numero + mensaje'");
+                sendTextMessage(sender, 'Para enviar un sms debes escribir: "enviar + numero + mensaje"');
             }
             else if (text.indexOf("hola") > -1 || text.indexOf("buenas") > -1) {
                 sendTextMessage(sender, "Hola! ¿Comó estas?");
             }
             else if (text.indexOf("enviar") > -1) {
-                sendSMS(sender,"72600261","vamos hacerlo");
-                sendTextMessage(sender, "Mensaje enviado con exito!");
+                
+                var getNthWord = function(string, n){
+                    var words = string.split(" ");
+                    return words[n-1];
+                }
+
+                var number = getNthWord(text,2);
+                var message = text.substr(text.indexOf(" ") + 2);
+                sendSMS(sender,number,message);
+                
+                
             }
             else{
                 sendTextMessage(sender, "¿Qué te gustaria saber de nosotros? ¿Información de contacto, cotizar un proyecto, conocer a nuestro equipo o leer un chiste?");
@@ -124,7 +133,9 @@ function sendSMS(sender,number,messagex){
       url:     'https://api.inxights.co/general/sendsms/',
       body:    "country_code=503&to=72600261&message=Que+ondas+man"
     }, function(error, response, body){
+      sendTextMessage(sender, "Mensaje enviado con exito!");
       sendTextMessage(sender, body);
+
     });
   
 }
