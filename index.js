@@ -74,7 +74,7 @@ app.post('/webhook/', function (req, res) {
             }
             else if (text.indexOf("noticias") > -1) {
                 
-                var message = text.split(" ").slice(1).join(" ");
+                var keywords = text.split(" ").slice(1).join(" ");
                 edhnews(sender,keywords);
                 
                 
