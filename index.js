@@ -130,7 +130,7 @@ app.listen(port, function () {
 function edhnews(sender,keywords){
 
 
-    sendTextMessage(sender, 'Estas son las últimas noticias relacioadas a :"' + keywords + '"');
+    sendTextMessage(sender, 'Estas son las últimas noticias relacioadas a: "' + keywords + '"');
     request.post({
     headers: {
         'content-type' : 'application/x-www-form-urlencoded',
@@ -140,22 +140,27 @@ function edhnews(sender,keywords){
       url:     'http://api.elaniin.com/general/getnews/',
       body:    'keyword=' + keywords
     }, function(error, response, body){
+          if (text.indexOf("no results") > -1) {
+                sendTextMessage(sender, 'No econtramos ningun resultado, recuerda usar una palabra o dos palabras para encontrar noticias.');
 
-          request({
-            url: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: {access_token:token},
-            method: 'POST',
-            json: {
-              recipient: {id:sender},
-              message: body,
-            }
-          }, function(errorrequest, responserequest, bodyrequest) {
-            if (errorrequest) {
-              console.log('Errorrequest sending message: ', errorrequest);
-            } else if (responserequest.bodyrequest.error) {
-              console.log('Error: ', responserequest.bodyrequest.error);
-            }
-          });
+          }else {
+              request({
+                url: 'https://graph.facebook.com/v2.6/me/messages',
+                qs: {access_token:token},
+                method: 'POST',
+                json: {
+                  recipient: {id:sender},
+                  message: body,
+                }
+              }, function(errorrequest, responserequest, bodyrequest) {
+                if (errorrequest) {
+                  console.log('Errorrequest sending message: ', errorrequest);
+                } else if (responserequest.bodyrequest.error) {
+                  console.log('Error: ', responserequest.bodyrequest.error);
+                }
+              });
+          }
+
 
     });
   
