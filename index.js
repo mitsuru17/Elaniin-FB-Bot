@@ -130,7 +130,7 @@ app.listen(port, function () {
 function edhnews(sender,keywords){
 
 
-    
+    sendTextMessage(sender, "estos son los keywords" + keywords);
     request.post({
     headers: {
         'content-type' : 'application/x-www-form-urlencoded',
@@ -140,7 +140,7 @@ function edhnews(sender,keywords){
       url:     'http://api.elaniin.com/general/getnews/',
       body:    'keyword=' + keywords
     }, function(error, response, body){
-
+            sendTextMessage(sender, "esta es la repuesta" + body);
           request({
             url: 'https://graph.facebook.com/v2.6/me/messages',
             qs: {access_token:token},
