@@ -39,13 +39,14 @@ app.post('/webhook/', function (req, res) {
 
         if (event.postback) {
             text = JSON.stringify(event.postback);
-                sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o g.adrian@elaniin.com");
-                sendTextMessage(sender, "Postback receivedx: "+text.substring(0, 200));
-
-                sendTextMessage(sender, "Postback receivedxx: "+text.substring(0, 200), token);
-
             if (text == '{"payload":"adrian"}') {
-                sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o g.adrian@elaniin.com");
+                sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o en su email g.adrian@elaniin.com");
+            }
+            if (text == '{"payload":"fabiola"}') {
+                sendTextMessage(sender, "Puedes contactar a Fabiola Leon al 7217-7470 o en su email eduardo.linares@elaniin.com");
+            }
+            if (text == '{"payload":"eduardo"}') {
+                sendTextMessage(sender, "Puedes contactar a Eduardo Linares al 7682-8668 o en su email fabiola.leon@elaniin.com");
             }
         }
 
@@ -155,13 +156,30 @@ function sendTeamMessage(sender) {
             "payload": "adrian",
           }],
         },{
-          "title": "Second card",
-          "subtitle": "Element #2 of an hscroll",
-          "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+          "title": "Eduardo Linares",
+          "subtitle": "Head of Technology",
+          "image_url": "http://toolboxsv.com/dev/bot-elaniin/imgs/eduardo.jpg",
           "buttons": [{
+            "type": "web_url",
+            "url": "http://m.me/eduardotbb",
+            "title": "Chatear"
+          }, {
             "type": "postback",
-            "title": "Postback",
-            "payload": "Payload for second element in a generic bubble",
+            "title": "Contacto",
+            "payload": "eduardo",
+          }],
+        },{
+          "title": "Fabiola Leon",
+          "subtitle": "Head of Strategy",
+          "image_url": "http://toolboxsv.com/dev/bot-elaniin/imgs/fabiola.jpg",
+          "buttons": [{
+            "type": "web_url",
+            "url": "http://m.me/fabiola.leon.73113",
+            "title": "Chatear"
+          }, {
+            "type": "postback",
+            "title": "Contacto",
+            "payload": "fabiola",
           }],
         }]
       }
