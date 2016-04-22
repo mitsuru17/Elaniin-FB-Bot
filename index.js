@@ -93,7 +93,7 @@ app.post('/webhook/', function (req, res) {
             else if (text.indexOf("cotiza") > -1) {
                 sendTextMessage(sender, "Para cotizar cualquier de nuestros servicios puedes ingresar al siguiente link: https://elaniin.com/cotiza-tu-proyecto/");
             }
-            else if (text == "sms") {
+            else if (text.indexOf("sms") > -1) {
                 sendTextMessage(sender, 'Para enviar un sms debes escribir: "enviar + numero + mensaje"');
             }
             else if (text.indexOf("hola") > -1 || text.indexOf("buenas") > -1) {
@@ -134,7 +134,7 @@ function sendSMS(sender,number,messagex){
       url:     'http://api.elaniin.com/general/sendsms/',
       body:    'country_code=503&to=' + number + '&message=' + messagex
     }, function(error, response, body){
-        if (body == body.indexOf('"code":"01"') > -1) {
+        if (body == body.indexOf("01") > -1) {
             sendTextMessage(sender, "Mensaje enviado con exito al " + number + "!");
         }else {
             sendTextMessage(sender, 'Lo siento, no pude enviar tu mensaje favor intenta de nuevo recuerda escribir: "enviar + numero + mensaje"');
