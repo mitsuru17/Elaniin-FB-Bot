@@ -78,9 +78,6 @@ app.post('/webhook/', function (req, res) {
             else if (text.indexOf("adrian")) {
                 sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o en su email g.adrian@elaniin.com");
             }
-            else if (text.indexOf("adrian")) {
-                sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o en su email g.adrian@elaniin.com");
-            }
             else if (text.indexOf("fabiola")) {
                 sendTextMessage(sender, "Puedes contactar a Fabiola Leon al 7217-7470 o en su email fabiola.leon@elaniin.com");
             }
@@ -99,7 +96,7 @@ app.post('/webhook/', function (req, res) {
             else if (text.indexOf("chiste") > -1) {
                 sendTextMessage(sender, "¿Tienes wi-fi? Sí ¿Y cuál es la clave? Tener dinero y pagarlo.");
             }
-            else if (text.indexOf("cv") > -1 || text.indexOf("curriculum") > -1) {
+            else if (text.indexOf("cv") > -1 || text.indexOf("curriculum") > -1 || text.indexOf("curriculum.") > -1 || text.indexOf("cv.") > -1) {
                 sendTextMessage(sender, "Nos encanta conocer gente nueva, puedes enviar tu CV a jobs@elaniin.com");
             }
             else if (text.indexOf("contacto") > -1 || text.indexOf("contactar") > -1) {
