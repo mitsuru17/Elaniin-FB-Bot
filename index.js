@@ -52,21 +52,21 @@ app.post('/webhook/', function (req, res) {
             else if (text.indexOf("chiste") > -1) {
                 sendTextMessage(sender, "¿Tienes wi-fi? Sí ¿Y cuál es la clave? Tener dinero y pagarlo.");
             }
-            else if (text == "contacto") {
+            else if (text.indexOf("contacto") > -1) {
                 sendTextMessage(sender, "Puedes escribirnos a hello@elaniin.com o llamarnos desde El Salvador al 2297-9723 o desde USA al (813)922-3440");
             }
             else if (text == "equipo") {
                 sendTextMessage(sender, "Nuestro equipo de trabajo es");
             }
-            else if (text == "cotiza") {
+            else if (text.indexOf("cotiza") > -1) {
                 sendTextMessage(sender, "Para cotizar cualquier de nuestros servicios puedes ingresar al siguiente link: https://elaniin.com/cotiza-tu-proyecto/");
             }
             else if (text == "sms") {
                 sendTextMessage(sender, "Para enviar un sms debes escribir: 'enviar numero_de_telefono tu_mensaje_a_enviar'");
             }
-            else if (text == "enviar") {
+            else if (text.indexOf("enviar") > -1) {
                 sendSMS("72600261","vamos hacerlo");
-                sendTextMessage(sender, "Mensaje enviado con exito!'");
+                sendTextMessage(sender, "Mensaje enviado con exito!");
             }
             else{
                 sendTextMessage(sender, "¿Qué te gustaria saber de nosotros? ¿Información de contacto, cotizar un proyecto, conocer a nuestro equipo, enviar un SMS o leer un chiste?");
@@ -93,7 +93,7 @@ function sendSMS(number,message){
     var headers = {
     'User-Agent':       'Super Agent/0.0.1',
     'Content-Type':     'application/x-www-form-urlencoded'
-    }
+    };
     request({
         url: 'https://api.inxights.co/general/sendsms/',
         headers: headers,
