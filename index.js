@@ -62,10 +62,6 @@ app.post('/webhook/', function (req, res) {
             if (text.indexOf("gracias") > -1 || text.indexOf("thank") > -1) {
                 sendTextMessage(sender, "Gracias a ti!");
             }
-            else if (text.indexOf("hola") > -1 || text.indexOf("buenas") > -1) {
-                sendTextMessage(sender, "Hola! ¿Comó estas?");
-                continue;
-            }
             else if (text.indexOf("ayuda") > -1) {
                 sendTextMessage(sender, "Con gusto puedo ayudarte, ¿te gustaria saber mis opciones?");
             }
@@ -86,6 +82,9 @@ app.post('/webhook/', function (req, res) {
             }
             else if (text == "sms") {
                 sendTextMessage(sender, "Para enviar un sms debes escribir: 'enviar + numero + mensaje'");
+            }
+            else if (text.indexOf("hola") > -1 || text.indexOf("buenas") > -1) {
+                sendTextMessage(sender, "Hola! ¿Comó estas?");
             }
             else if (text.indexOf("enviar") > -1) {
                 //sendSMS("72600261","vamos hacerlo");
