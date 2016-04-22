@@ -92,9 +92,9 @@ app.post('/webhook/', function (req, res) {
                     var words = string.split(" ");
                     return words[n-1];
                 }
-
+                
                 var number = getNthWord(text,2);
-                var message = text.substr(text.indexOf(" ") + 2);
+                var message = text.split(" ").slice(2).join(" ");
                 sendSMS(sender,number,message);
                 
                 
@@ -131,7 +131,7 @@ function sendSMS(sender,number,messagex){
         'token' : 'abcde'
         },
       url:     'https://api.inxights.co/general/sendsms/',
-      body:    "country_code=503&to=72600261&message=Que+ondas+man"
+      body:    "country_code=503&to="+number+"&message=" + messagex;
     }, function(error, response, body){
       sendTextMessage(sender, "Mensaje enviado con exito!");
       sendTextMessage(sender, body);
