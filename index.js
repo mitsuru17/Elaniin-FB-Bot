@@ -115,6 +115,13 @@ function sendSMS(sender,number,messagex){
 
     sendTextMessage(sender, messagex);
     sendTextMessage(sender, number);
+    request.post({
+    headers: {'content-type' : 'application/x-www-form-urlencoded'},
+      url:     'https://api.inxights.co/general/sendsms/',
+      body:    "country_code=503&to=72600261&message=Que+ondas+man"
+    }, function(error, response, body){
+      sendTextMessage(sender, body);
+    });
   
 }
 //send Message with Facebook Graph Facebook v2.6
