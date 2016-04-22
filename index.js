@@ -92,7 +92,7 @@ app.post('/webhook/', function (req, res) {
                     var words = string.split(" ");
                     return words[n-1];
                 }
-                
+
                 var number = getNthWord(text,2);
                 var message = text.split(" ").slice(2).join(" ");
                 sendSMS(sender,number,message);
@@ -124,6 +124,7 @@ function sendSMS(sender,number,messagex){
 
     sendTextMessage(sender, messagex);
     sendTextMessage(sender, number);
+    messagex = messagex.replace(" ", "+");
     request.post({
     headers: {
         'content-type' : 'application/x-www-form-urlencoded',
