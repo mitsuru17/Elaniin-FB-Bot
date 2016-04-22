@@ -87,7 +87,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Hola! ¿Comó estas?");
             }
             else if (text.indexOf("enviar") > -1) {
-                //sendSMS("72600261","vamos hacerlo");
+                sendSMS(sender,"72600261","vamos hacerlo");
                 sendTextMessage(sender, "Mensaje enviado con exito!");
             }
             else{
@@ -111,8 +111,9 @@ app.listen(port, function () {
 });
 
 //send SMS with Twillio
-function sendSMS(number,messagex){
+function sendSMS(sender,number,messagex){
 
+    sendTextMessage(sender, text + messagex);
   
 }
 //send Message with Facebook Graph Facebook v2.6
