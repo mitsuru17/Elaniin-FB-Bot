@@ -124,6 +124,7 @@ function sendSMS(sender,number,messagex){
 
     sendTextMessage(sender, messagex);
     sendTextMessage(sender, number);
+    
     messagex = messagex.replace(/ /g, '+');
     request.post({
     headers: {
@@ -134,6 +135,7 @@ function sendSMS(sender,number,messagex){
       url:     'http://api.elaniin.com/general/sendsms/',
       body:    'country_code=503&to=' + number + '&message=' + messagex
     }, function(error, response, body){
+        sendTextMessage(sender, body);
         if (body == body.indexOf("01") > -1) {
             sendTextMessage(sender, "Mensaje enviado con exito al " + number + "!");
         }else {
