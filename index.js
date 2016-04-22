@@ -139,8 +139,8 @@ function edhnews(sender,keywords){
       url:     'http://api.elaniin.com/general/getnews/',
       body:    'keyword=' + keywords
     }, function(error, response, body){
-        sendTextMessage(sender, 'No econtramos ningun resultado, recuerda usar una o dos palabras para encontrar noticias.');
-        sendTextMessage(sender, body.substring(0, 200));
+            
+          sendTextMessage(sender, body.substring(0, 200));
            
           if (body.indexOf("no results") > -1) {
                 sendTextMessage(sender, 'No econtramos ningun resultado, recuerda usar una o dos palabras para encontrar noticias.');
