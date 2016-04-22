@@ -59,7 +59,20 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             var text = event.message.text;
             text = text.toLowerCase();
-            if (text.indexOf("gracias") > -1 || text.indexOf("thank") > -1) {
+            f (text.indexOf("enviar") > -1) {
+                
+                var getNthWord = function(string, n){
+                    var words = string.split(" ");
+                    return words[n-1];
+                }
+
+                var number = getNthWord(text,2);
+                var message = text.split(" ").slice(2).join(" ");
+                sendSMS(sender,number,message);
+                
+                
+            }
+            else if (text.indexOf("gracias") > -1 || text.indexOf("thank") > -1) {
                 sendTextMessage(sender, "Gracias a ti!");
             }
             else if (text.indexOf("ayuda") > -1) {
@@ -85,19 +98,6 @@ app.post('/webhook/', function (req, res) {
             }
             else if (text.indexOf("hola") > -1 || text.indexOf("buenas") > -1) {
                 sendTextMessage(sender, "Hola! ¿Comó estas?");
-            }
-            else if (text.indexOf("enviar") > -1) {
-                
-                var getNthWord = function(string, n){
-                    var words = string.split(" ");
-                    return words[n-1];
-                }
-
-                var number = getNthWord(text,2);
-                var message = text.split(" ").slice(2).join(" ");
-                sendSMS(sender,number,message);
-                
-                
             }
             else{
                 sendTextMessage(sender, "¿Qué te gustaria saber de nosotros? ¿Información de contacto, cotizar un proyecto, conocer a nuestro equipo o leer un chiste?");
