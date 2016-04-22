@@ -134,9 +134,11 @@ function sendSMS(sender,number,messagex){
       url:     'https://api.inxights.co/general/sendsms/',
       body:    'country_code=503&to=' + number + '&message=' + messagex
     }, function(error, response, body){
-      sendTextMessage(sender, "Mensaje enviado con exito!");
-      sendTextMessage(sender, body);
-
+        if (body == text.indexOf('"code":"01"') > -1) {
+            sendTextMessage(sender, "Mensaje enviado con exito al " + number + "!");
+        }else {
+            sendTextMessage(sender, 'Lo siento, no pude enviar tu mensaje favor intenta de nuevo recuerda escribir: "enviar + numero + mensaje"');
+        }
     });
   
 }
