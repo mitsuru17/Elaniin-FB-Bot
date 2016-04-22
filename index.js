@@ -131,7 +131,7 @@ function sendSMS(sender,number,messagex){
         'key' : '1234',
         'token' : 'abcde'
         },
-      url:     'https://api.inxights.co/general/sendsms/',
+      url:     'http://api.elaniin.com/general/sendsms/',
       body:    'country_code=503&to=' + number + '&message=' + messagex
     }, function(error, response, body){
         if (body == body.indexOf('"code":"01"') > -1) {
