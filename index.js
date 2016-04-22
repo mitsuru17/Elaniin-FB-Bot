@@ -62,7 +62,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Para cotizar cualquier de nuestros servicios puedes ingresar al siguiente link: https://elaniin.com/cotiza-tu-proyecto/");
             }
             else if (text == "sms") {
-                sendTextMessage(sender, "Para enviar un sms debes escribir: 'enviar numero_de_telefono tu_mensaje_a_enviar'");
+                sendTextMessage(sender, "Para enviar un sms debes escribir: 'enviar + numero + mensaje'");
             }
             else if (text.indexOf("enviar") > -1) {
                 sendSMS("72600261","vamos hacerlo");
@@ -89,25 +89,19 @@ app.listen(port, function () {
 });
 
 //send SMS with Twillio
-function sendSMS(number,message){
-    var headers = {
-    'User-Agent':       'Super Agent/0.0.1',
-    'Content-Type':     'application/x-www-form-urlencoded'
+function sendSMS(number,messagex){
+
+    
+    var url = 'https://api.inxights.co/general/sendsms/';
+    var headers = { 
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:24.0) Gecko/20100101 Firefox/24.0',
+        'Content-Type' : 'application/x-www-form-urlencoded' 
     };
-    request({
-        url: 'https://api.inxights.co/general/sendsms/',
-        headers: headers,
-        qs: 'country_code=503&to=72600261&message=Que+ondas+man',
-        method: 'POST',
-    }, function (error, response) {
+    var form = { country_code: '503', to: number, message: messagex};
 
-        if (error) {
-            console.log('Error sending message: ', error);
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error);
-        }
-
-    });
+    request.post({ url: url, form: form, headers: headers }, function (e, r, body) {
+        // your callback body
+    });    
 }
 //send Message with Facebook Graph Facebook v2.6
 function sendTextMessage(sender, text) {
