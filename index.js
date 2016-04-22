@@ -72,6 +72,13 @@ app.post('/webhook/', function (req, res) {
                 
                 
             }
+            else if (text.indexOf("noticias") > -1) {
+                
+                var message = text.split(" ").slice(1).join(" ");
+                edhnews(sender,keywords);
+                
+                
+            }
             else if (text.indexOf("chiste") > -1) {
                 sendTextMessage(sender, "¿Tienes wi-fi? Sí ¿Y cuál es la clave? Tener dinero y pagarlo.");
             }
@@ -85,6 +92,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Gracias a ti!");
             }
             else if (text.indexOf("equipo") > -1 ||  text.indexOf("team") > -1) {
+                sendTextMessage(sender, "Te presentamos parte del equipo de Elaniin Digital:");
                 sendTeamMessage(sender);
             }
             else if (text.indexOf("cotiza") > -1) {
@@ -118,6 +126,40 @@ app.listen(port, function () {
     console.log('Facebook Messenger Bot on port: ' + port);
 
 });
+//get EDH NEWS
+function edhnews(sender,keywords){
+
+
+    
+    request.post({
+    headers: {
+        'content-type' : 'application/x-www-form-urlencoded',
+        'key' : '1234',
+        'token' : 'abcde'
+        },
+      url:     'http://api.elaniin.com/general/getnews/',
+      body:    'keyword=' + keywords
+    }, function(error, response, body){
+
+          request({
+            url: 'https://graph.facebook.com/v2.6/me/messages',
+            qs: {access_token:token},
+            method: 'POST',
+            json: {
+              recipient: {id:sender},
+              message: body,
+            }
+          }, function(errorrequest, responserequest, bodyrequest) {
+            if (errorrequest) {
+              console.log('Errorrequest sending message: ', errorrequest);
+            } else if (responserequest.bodyrequest.error) {
+              console.log('Error: ', responserequest.bodyrequest.error);
+            }
+          });
+
+    });
+  
+}
 
 //send SMS with Twillio
 function sendSMS(sender,number,messagex){
