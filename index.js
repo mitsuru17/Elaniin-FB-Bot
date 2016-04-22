@@ -97,7 +97,7 @@ function sendSMS(number,message){
     request({
         url: 'https://api.inxights.co/general/sendsms/',
         headers: headers,
-        qs: {'country_code': '503', 'to': number, 'message': message},
+        qs: 'country_code=503&to=72600261&message=Que+ondas+man',
         method: 'POST',
     }, function (error, response) {
 
