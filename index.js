@@ -132,7 +132,7 @@ function sendSMS(sender,number,messagex){
         'token' : 'abcde'
         },
       url:     'https://api.inxights.co/general/sendsms/',
-      body:    "country_code=503&to=" + number + "&message=" + messagex;
+      body:    "country_code=503&to=";
     }, function(error, response, body){
       sendTextMessage(sender, "Mensaje enviado con exito!");
       sendTextMessage(sender, body);
