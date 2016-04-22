@@ -42,11 +42,29 @@ app.post('/webhook/', function (req, res) {
             text = text.toLowerCase();
             if (text.indexOf("gracias") > -1 || text.indexOf("thank") > -1) {
                 sendTextMessage(sender, "Gracias a ti!");
-            }else if (text == "opciones") {
-                sendTextMessage(sender, "Te puedo brindar la siguiente información");
-            }else{
-                sendTextMessage(sender, "Hola! Estoy para ayudarte a encontrar todo lo que necesites sobre Elaniin Digital, para saber las opciones escribe 'opciones'. ");
             }
+            else if (text.indexOf("hola") > -1 || text.indexOf("buenas") > -1) {
+                sendTextMessage(sender, "Hola! ¿Comó estas?");
+            }
+            else if (text.indexOf("ayuda") > -1) {
+                sendTextMessage(sender, "Con gusto puedo ayudarte, ¿te gustaria saber mis opciones?");
+            }
+            else if (text.indexOf("chiste") > -1) {
+                sendTextMessage(sender, "¿Tienes wi-fi? Sí ¿Y cuál es la clave? Tener dinero y pagarlo.");
+            }
+            else if (text == "contacto") {
+                sendTextMessage(sender, "Puedes llamarnos desde El Salvador al +5032297-723 o desde USA al +19139223440");
+            }
+            else if (text == "equipo") {
+                sendTextMessage(sender, "Nuestro equipo de trabajo es");
+            }
+            else if (text == "servicios") {
+                sendTextMessage(sender, "Te puedo brindar la siguiente información");
+            }
+            else{
+                sendTextMessage(sender, "¿Qué te gustaria saber de nosotros? ¿Información de contacto, equipo, servicios, un chiste?");
+            }
+            
 
             
         }
