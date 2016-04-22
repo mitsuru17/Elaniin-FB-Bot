@@ -43,10 +43,16 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o en su email g.adrian@elaniin.com");
             }
             if (text == '{"payload":"fabiola"}') {
-                sendTextMessage(sender, "Puedes contactar a Fabiola Leon al 7217-7470 o en su email eduardo.linares@elaniin.com");
+                sendTextMessage(sender, "Puedes contactar a Fabiola Leon al 7217-7470 o en su email fabiola.leon@elaniin.com");
             }
             if (text == '{"payload":"eduardo"}') {
-                sendTextMessage(sender, "Puedes contactar a Eduardo Linares al 7682-8668 o en su email fabiola.leon@elaniin.com");
+                sendTextMessage(sender, "Puedes contactar a Eduardo Linares al 7682-8668 o en su email eduardo.linares@elaniin.com");
+            }
+            if (text == '{"payload":"xochilt"}') {
+                sendTextMessage(sender, "Puedes contactar a Xochilt Guardado en x.guardado@elaniin.com");
+            }
+            if (text == '{"payload":"carranza"}') {
+                sendTextMessage(sender, "Puedes contactar a Carlos Carranza en carlos.carranza@elaniin.com");
             }
         }
 
@@ -180,6 +186,32 @@ function sendTeamMessage(sender) {
             "type": "postback",
             "title": "Contacto",
             "payload": "fabiola",
+          }],
+        },{
+          "title": "Carlos Carranza",
+          "subtitle": "Marketing Analyst",
+          "image_url": "http://toolboxsv.com/dev/bot-elaniin/imgs/carranza.jpg",
+          "buttons": [{
+            "type": "web_url",
+            "url": "http://m.me/carlos.carranzah",
+            "title": "Chatear"
+          }, {
+            "type": "postback",
+            "title": "Contacto",
+            "payload": "carranza",
+          }],
+        },{
+          "title": "Xochilt Guardado",
+          "subtitle": "Head of Strategy",
+          "image_url": "http://toolboxsv.com/dev/bot-elaniin/imgs/xochilt.jpg",
+          "buttons": [{
+            "type": "web_url",
+            "url": "http://m.me/xochiltN",
+            "title": "Chatear"
+          }, {
+            "type": "postback",
+            "title": "Contacto",
+            "payload": "xochilt",
           }],
         }]
       }
