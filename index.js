@@ -75,24 +75,6 @@ app.post('/webhook/', function (req, res) {
             else if (text.indexOf("gracias") > -1 || text.indexOf("thank") > -1) {
                 sendTextMessage(sender, "Gracias a ti!");
             }
-            else if (text.indexOf("adrian")) {
-                sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o en su email g.adrian@elaniin.com");
-            }
-            else if (text.indexOf("fabiola")) {
-                sendTextMessage(sender, "Puedes contactar a Fabiola Leon al 7217-7470 o en su email fabiola.leon@elaniin.com");
-            }
-            else if (text.indexOf("eduardo")) {
-                sendTextMessage(sender, "Puedes contactar a Eduardo Linares al 7682-8668 o en su email eduardo.linares@elaniin.com");
-            }
-            else if (text.indexOf("xochilt")) {
-                sendTextMessage(sender, "Puedes contactar a Xochilt Guardado en x.guardado@elaniin.com");
-            }
-            else if (text.indexOf("carranza")) {
-                sendTextMessage(sender, "Puedes contactar a Carlos Carranza en carlos.carranza@elaniin.com");
-            }
-            else if (text.indexOf("ayuda") > -1) {
-                sendTextMessage(sender, "Con gusto puedo ayudarte, ¿te gustaria saber mis opciones?");
-            }
             else if (text.indexOf("chiste") > -1) {
                 sendTextMessage(sender, "¿Tienes wi-fi? Sí ¿Y cuál es la clave? Tener dinero y pagarlo.");
             }
@@ -100,7 +82,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Nos encanta conocer gente nueva, puedes enviar tu CV a jobs@elaniin.com");
             }
             else if (text.indexOf("contacto") > -1 || text.indexOf("contactar") > -1) {
-                sendTextMessage(sender, "Puedes escribirnos a hello@elaniin.com o llamarnos desde El Salvador al 2297-9723 o desde USA al (813)922-3440");
+               sendTextMessage(sender, "Puedes escribirnos a hello@elaniin.com o llamarnos desde El Salvador al 2297-9723 o desde USA al (813)922-3440");    
             }
             else if (text.indexOf("equipo") > -1 ||  text.indexOf("team") > -1) {
                 sendTeamMessage(sender);
