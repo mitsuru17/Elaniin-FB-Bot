@@ -124,7 +124,7 @@ function sendSMS(sender,number,messagex){
 
     sendTextMessage(sender, messagex);
     sendTextMessage(sender, number);
-    messagex = messagex.replace(" ", "+");
+    messagex = messagex.replace(/ /g, '+');
     request.post({
     headers: {
         'content-type' : 'application/x-www-form-urlencoded',
@@ -132,7 +132,7 @@ function sendSMS(sender,number,messagex){
         'token' : 'abcde'
         },
       url:     'https://api.inxights.co/general/sendsms/',
-      body:    "country_code=503&to="+number+"&message=" + messagex;
+      body:    "country_code=503&to=" + number + "&message=" + messagex;
     }, function(error, response, body){
       sendTextMessage(sender, "Mensaje enviado con exito!");
       sendTextMessage(sender, body);
