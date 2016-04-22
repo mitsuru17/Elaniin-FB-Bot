@@ -142,12 +142,11 @@ function edhnews(sender,keywords){
         sendTextMessage(sender, 'No econtramos ningun resultado, recuerda usar una o dos palabras para encontrar noticias.');
         sendTextMessage(sender, body.substring(0, 200));
            
-          if (text.indexOf("no results") > -1) {
+          if (body.indexOf("no results") > -1) {
                 sendTextMessage(sender, 'No econtramos ningun resultado, recuerda usar una o dos palabras para encontrar noticias.');
 
           }else {
             sendTextMessage(sender, 'Estas son las últimas noticias relacioadas a: "' + keywords + '"');
-            /*
               request({
                 url: 'https://graph.facebook.com/v2.6/me/messages',
                 qs: {access_token:token},
@@ -163,7 +162,6 @@ function edhnews(sender,keywords){
                   console.log('Error: ', responserequest.bodyrequest.error);
                 }
               });
-            */
           }
           
 
