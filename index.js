@@ -52,10 +52,13 @@ app.post('/webhook/', function (req, res) {
             else if (text.indexOf("chiste") > -1) {
                 sendTextMessage(sender, "¿Tienes wi-fi? Sí ¿Y cuál es la clave? Tener dinero y pagarlo.");
             }
+            else if (text.indexOf("cv") > -1 || text.indexOf("curriculum") > -1) {
+                sendTextMessage(sender, "Nos encanta conocer gente nueva, puedes enviar tu CV a jobs@elaniin.com");
+            }
             else if (text.indexOf("contacto") > -1 || text.indexOf("contactar") > -1) {
                 sendTextMessage(sender, "Puedes escribirnos a hello@elaniin.com o llamarnos desde El Salvador al 2297-9723 o desde USA al (813)922-3440");
             }
-            else if (text == "equipo") {
+            else if (text.indexOf("equipo") > -1 ||  text.indexOf("team") > -1) {
                 sendTeamMessage(sender);
             }
             else if (text.indexOf("cotiza") > -1) {
@@ -129,23 +132,23 @@ function sendTeamMessage(sender) {
         "elements": [{
           "title": "First card",
           "subtitle": "Element #1 of an hscroll",
-          "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+          "image_url": "https://elaniin.com/wp-content/uploads/2015/05/ADRIAN.jpg",
           "buttons": [{
             "type": "web_url",
             "url": "https://www.messenger.com/",
             "title": "Web url"
           }, {
             "type": "postback",
-            "title": "Postback",
+            "title": "Conocer Más",
             "payload": "Payload for first element in a generic bubble",
           }],
         },{
           "title": "Second card",
           "subtitle": "Element #2 of an hscroll",
-          "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+          "image_url": "https://elaniin.com/wp-content/uploads/2015/05/ADRIAN.jpg",
           "buttons": [{
             "type": "postback",
-            "title": "Postback",
+            "title": "Conocer Más",
             "payload": "Payload for second element in a generic bubble",
           }],
         }]
