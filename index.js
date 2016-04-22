@@ -59,7 +59,7 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             var text = event.message.text;
             text = text.toLowerCase();
-            if (text.indexOf("enviar") > -1) {
+            if (text.indexOf("enviarsms") > -1) {
                 
                 var getNthWord = function(string, n){
                     var words = string.split(" ");
@@ -74,6 +74,24 @@ app.post('/webhook/', function (req, res) {
             }
             else if (text.indexOf("gracias") > -1 || text.indexOf("thank") > -1) {
                 sendTextMessage(sender, "Gracias a ti!");
+            }
+            else if (text.indexOf("adrian")) {
+                sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o en su email g.adrian@elaniin.com");
+            }
+            else if (text.indexOf("adrian")) {
+                sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o en su email g.adrian@elaniin.com");
+            }
+            else if (text.indexOf("fabiola")) {
+                sendTextMessage(sender, "Puedes contactar a Fabiola Leon al 7217-7470 o en su email fabiola.leon@elaniin.com");
+            }
+            else if (text.indexOf("eduardo")) {
+                sendTextMessage(sender, "Puedes contactar a Eduardo Linares al 7682-8668 o en su email eduardo.linares@elaniin.com");
+            }
+            else if (text.indexOf("xochilt")) {
+                sendTextMessage(sender, "Puedes contactar a Xochilt Guardado en x.guardado@elaniin.com");
+            }
+            else if (text.indexOf("carranza")) {
+                sendTextMessage(sender, "Puedes contactar a Carlos Carranza en carlos.carranza@elaniin.com");
             }
             else if (text.indexOf("ayuda") > -1) {
                 sendTextMessage(sender, "Con gusto puedo ayudarte, ¿te gustaria saber mis opciones?");
@@ -94,7 +112,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Para cotizar cualquier de nuestros servicios puedes ingresar al siguiente link: https://elaniin.com/cotiza-tu-proyecto/");
             }
             else if (text.indexOf("sms") > -1) {
-                sendTextMessage(sender, 'Para enviar un sms debes escribir: "enviar + numero + mensaje"');
+                sendTextMessage(sender, 'Para enviar un sms debes escribir: "enviarsms + numero + mensaje"');
             }
             else if (text.indexOf("hola") > -1 || text.indexOf("buenas") > -1) {
                 sendTextMessage(sender, "Hola! ¿Comó estas?");
@@ -122,8 +140,7 @@ app.listen(port, function () {
 //send SMS with Twillio
 function sendSMS(sender,number,messagex){
 
-    sendTextMessage(sender, messagex);
-    sendTextMessage(sender, number);
+
     
     messagex = messagex.replace(/ /g, '+');
     request.post({
@@ -135,11 +152,10 @@ function sendSMS(sender,number,messagex){
       url:     'http://api.elaniin.com/general/sendsms/',
       body:    'country_code=503&to=' + number + '&message=' + messagex
     }, function(error, response, body){
-        sendTextMessage(sender, body);
         if (body.indexOf("sent") > -1) {
             sendTextMessage(sender, "Mensaje enviado con exito al " + number + "!");
         }else {
-            sendTextMessage(sender, 'Lo siento, no pude enviar tu mensaje favor intenta de nuevo recuerda escribir: "enviar + numero + mensaje"');
+            sendTextMessage(sender, 'Lo siento, no pude enviar tu mensaje favor intenta de nuevo recuerda escribir: "enviarsms + numero + mensaje"');
         }
     });
   
