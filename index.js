@@ -96,6 +96,9 @@ app.post('/webhook/', function (req, res) {
             else if (text.indexOf("hola") > -1 || text.indexOf("buenas") > -1) {
                 sendTextMessage(sender, "Hola! ¿Comó estas?");
             }
+            else if (text.indexOf("creador") > -1 || text.indexOf("creo") > -1 || text.indexOf("creó") > -1) {
+                sendTextMessage(sender, "Buena pregunta, fui creado en Elaniin Digital con la tecnologia de Facebook, para saber más puedes leer https://developers.facebook.com/products/messenger/ o contactarnos en hello@elaniin.com");
+            }
             else{
                 sendTextMessage(sender, "¿Qué te gustaria saber de nosotros? ¿Información de contacto, cotizar un proyecto, conocer a nuestro equipo, enviar tu CV o leer un chiste?");
             }
