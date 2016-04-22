@@ -130,7 +130,6 @@ app.listen(port, function () {
 function edhnews(sender,keywords){
 
 
-    sendTextMessage(sender, 'Estas son las últimas noticias relacioadas a: "' + keywords + '"');
     request.post({
     headers: {
         'content-type' : 'application/x-www-form-urlencoded',
@@ -144,6 +143,7 @@ function edhnews(sender,keywords){
                 sendTextMessage(sender, 'No econtramos ningun resultado, recuerda usar una palabra o dos palabras para encontrar noticias.');
 
           }else {
+            sendTextMessage(sender, 'Estas son las últimas noticias relacioadas a: "' + keywords + '"');
               request({
                 url: 'https://graph.facebook.com/v2.6/me/messages',
                 qs: {access_token:token},
