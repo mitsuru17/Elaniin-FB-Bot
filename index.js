@@ -39,12 +39,13 @@ app.post('/webhook/', function (req, res) {
 
         if (event.message && event.message.text) {
             var text = event.message.text;
-
-            if (text == "opciones") {
+            text = text.toLowerCase();
+            if (text.indexOf("gracias") > -1 || text.indexOf("thank") > -1) {
+                sendTextMessage(sender, "Gracias a ti!");
+            }else if (text == "opciones") {
                 sendTextMessage(sender, "Te puedo brindar la siguiente información");
             }else{
                 sendTextMessage(sender, "Hola! Estoy para ayudarte a encontrar todo lo que necesites sobre Elaniin Digital, para saber las opciones escribe 'opciones'. ");
-
             }
 
             
