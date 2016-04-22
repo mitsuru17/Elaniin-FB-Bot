@@ -39,12 +39,12 @@ app.post('/webhook/', function (req, res) {
 
         if (event.postback) {
             text = JSON.stringify(event.postback);
-            sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o g.adrian@elaniin.com");
+                sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o g.adrian@elaniin.com");
                 sendTextMessage(sender, "Postback receivedx: "+text.substring(0, 200));
 
                 sendTextMessage(sender, "Postback receivedxx: "+text.substring(0, 200), token);
 
-            if (text == "adrian") {
+            if (text == '{"payload":"adrian"}') {
                 sendTextMessage(sender, "Puedes contactar a Adrián Gómez al 7260-0261 o g.adrian@elaniin.com");
             }
         }
