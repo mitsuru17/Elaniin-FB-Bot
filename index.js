@@ -72,9 +72,6 @@ app.post('/webhook/', function (req, res) {
                 
                 
             }
-            else if (text.indexOf("gracias") > -1 || text.indexOf("thank") > -1) {
-                sendTextMessage(sender, "Gracias a ti!");
-            }
             else if (text.indexOf("chiste") > -1) {
                 sendTextMessage(sender, "¿Tienes wi-fi? Sí ¿Y cuál es la clave? Tener dinero y pagarlo.");
             }
@@ -83,6 +80,9 @@ app.post('/webhook/', function (req, res) {
             }
             else if (text.indexOf("contacto") > -1 || text.indexOf("contactar") > -1) {
                sendTextMessage(sender, "Puedes escribirnos a hello@elaniin.com o llamarnos desde El Salvador al 2297-9723 o desde USA al (813)922-3440");    
+            }
+            else if (text.indexOf("gracias") > -1 || text.indexOf("thank") > -1) {
+                sendTextMessage(sender, "Gracias a ti!");
             }
             else if (text.indexOf("equipo") > -1 ||  text.indexOf("team") > -1) {
                 sendTeamMessage(sender);
@@ -97,7 +97,7 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, "Hola! ¿Comó estas?");
             }
             else{
-                sendTextMessage(sender, "¿Qué te gustaria saber de nosotros? ¿Información de contacto, cotizar un proyecto, conocer a nuestro equipo o leer un chiste?");
+                sendTextMessage(sender, "¿Qué te gustaria saber de nosotros? ¿Información de contacto, cotizar un proyecto, conocer a nuestro equipo, enviar tu CV o leer un chiste?");
             }
             
 
