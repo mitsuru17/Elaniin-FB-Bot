@@ -132,23 +132,23 @@ function sendTeamMessage(sender) {
         "elements": [{
           "title": "First card",
           "subtitle": "Element #1 of an hscroll",
-          "image_url": "https://elaniin.com/wp-content/uploads/2015/05/ADRIAN.jpg",
+          "image_url": "http://toolboxsv.com/dev/bot-elaniin/imgs/adrian.png",
           "buttons": [{
             "type": "web_url",
             "url": "https://www.messenger.com/",
             "title": "Web url"
           }, {
             "type": "postback",
-            "title": "Conocer Más",
+            "title": "Postback",
             "payload": "Payload for first element in a generic bubble",
           }],
         },{
           "title": "Second card",
           "subtitle": "Element #2 of an hscroll",
-          "image_url": "https://elaniin.com/wp-content/uploads/2015/05/ADRIAN.jpg",
+          "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
           "buttons": [{
             "type": "postback",
-            "title": "Conocer Más",
+            "title": "Postback",
             "payload": "Payload for second element in a generic bubble",
           }],
         }]
