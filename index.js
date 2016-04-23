@@ -148,23 +148,7 @@ function edhnews(sender,keywords){
           }else {
 
             sendTextMessage(sender, 'Estas son las últimas noticias relacioadas a: "' + keywords + '"');
-            /*
-              request({
-                url: 'https://graph.facebook.com/v2.6/me/messages',
-                qs: {access_token:token},
-                method: 'POST',
-                json: {
-                  recipient: {id:sender},
-                  message: body,
-                }
-              }, function(errorrequest, responserequest, bodyrequest) {
-                if (errorrequest) {
-                  console.log('Errorrequest sending message: ', errorrequest);
-                } else if (responserequest.bodyrequest.error) {
-                  console.log('Error: ', responserequest.bodyrequest.error);
-                }
-              });
-              */
+            sendOtherMessage(sender, body);
           }
           
 
@@ -196,7 +180,27 @@ function sendSMS(sender,number,messagex){
     });
   
 }
-//send Message with Facebook Graph Facebook v2.6
+//send Messages with Facebook Graph Facebook v2.6
+function sendOtherMessage(sender, messageData) {
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token: token},
+        method: 'POST',
+        json: {
+            recipient: {id: sender},
+            message: messageData
+        }
+    }, function (error, response) {
+
+        if (error) {
+            console.log('Error sending message: ', error);
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error);
+        }
+
+    });
+
+}
 function sendTextMessage(sender, text) {
 
     var messageData = {
