@@ -54,6 +54,9 @@ app.post('/webhook/', function (req, res) {
             if (text == '{"payload":"carranza"}') {
                 sendTextMessage(sender, "Puedes contactar a Carlos Carranza en carlos.carranza@elaniin.com");
             }
+            if (text == '{"payload":"edhbusqueda"}') {
+                sendTextMessage(sender, 'Con gusto puedo ayudarte a encontrar más noticias, escribe "noticias" seguido del tema de tu interes.');
+            }
         }
 
         if (event.message && event.message.text) {
@@ -128,8 +131,6 @@ app.listen(port, function () {
 });
 //get EDH NEWS
 function edhnews(sender,keywords){
-
-
     request.post({
     headers: {
         'content-type' : 'application/x-www-form-urlencoded',
@@ -140,21 +141,15 @@ function edhnews(sender,keywords){
       body:    'keyword=' + keywords
     }, function(error, response, body){
             
-          sendTextMessage(sender, body.substring(0, 200));
+          //sendTextMessage(sender, body.substring(0, 200));
            
           if (body.indexOf("no results") > -1) {
                 sendTextMessage(sender, 'No econtramos ningun resultado, recuerda usar una o dos palabras para encontrar noticias.');
-
           }else {
-
-            sendTextMessage(sender, 'Estas son las últimas noticias relacioadas a: "' + keywords + '"');
+            sendTextMessage(sender, 'Estas son las últimas noticias relacionadas a: "' + keywords + '"');
             sendOtherMessage(sender, body);
           }
-          
-
-
     });
-  
 }
 
 //send SMS with Twillio
