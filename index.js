@@ -105,7 +105,13 @@ app.post('/webhook/', function (req, res) {
                 sendTextMessage(sender, 'Para enviar un sms debes escribir: "enviarsms + numero + mensaje"');
             }
             else if (text.indexOf("hola") > -1 || text.indexOf("buenas") > -1) {
-                sendTextMessage(sender, "Hola! ¿Comó estas?");
+                sendTextMessage(sender, "Hola Jefe! ¿Comó estas?");
+            }
+            else if (text.indexOf("congreso") > -1 || text.indexOf("uca") > -1) {
+                sendTextMessage(sender, "Hola a todos! Los invito a poner atención a las charla de Adrián uno de mis creadores.");
+            }
+            else if (text.indexOf("portate") > -1) {
+                sendTextMessage(sender, "Claro solo voy a stalkear a las chicas del congreso ;)");
             }
             else if (text.indexOf("creador") > -1 || text.indexOf("creo") > -1 || text.indexOf("creó") > -1) {
                 sendTextMessage(sender, "Buena pregunta, fui creado en Elaniin Digital con la tecnologia de Facebook, para saber más puedes leer https://developers.facebook.com/products/messenger/ o contactarnos en hello@elaniin.com");
